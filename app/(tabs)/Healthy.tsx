@@ -1,8 +1,9 @@
 import React from 'react'
+import { View } from 'react-native'
 
 const Healthy = () => {
   return (
-    <>Healthy</>
+    <View>Healthy</View>
   )
 }
 

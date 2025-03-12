@@ -34,25 +34,23 @@ export default function RootLayout() {
 
   return (
     <Suspense fallback={"...Loading"}>
-      <HydrateAuth>
+      {/* <HydrateAuth> */}
         <ThemeProvider
-          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-        >
+           value={colorScheme === "light" ? DarkTheme : DefaultTheme}
+    >
           <Stack screenOptions={{ headerShown: false }} initialRouteName="AppEntryPage">
-            <Stack.Screen
-              name="AppEntryPage"
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
-            <Stack.Screen name="login" options={{ headerShown: false }} />
-            <Stack.Screen name="register" options={{ headerShown: false }} />
-            {/* <Stack.Screen name="Home" options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen name="Services" options={{ headerShown: false }} /> */}
-            <Stack.Screen name="+not-found" />
-          </Stack>
-          <StatusBar style="auto" />
-        </ThemeProvider>
-      </HydrateAuth>
+          <Stack.Screen
+            name="AppEntryPage"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
+          <Stack.Screen name="login" options={{ headerShown: false }} />
+          <Stack.Screen name="register" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
+    </ThemeProvider>
+       {/* </HydrateAuth> */}
     </Suspense>
   );
 }

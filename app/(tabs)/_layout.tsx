@@ -7,15 +7,14 @@ export default function TabsLayout() {
     <Tabs
       initialRouteName="Vegan"
       screenOptions={{
-        tabBarActiveTintColor: "#25AE87",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: "#0fba37",
+        tabBarInactiveTintColor: "#e0e0e0",
         tabBarStyle: {
           backgroundColor: "white",
           height: 70,
           borderTopWidth: 1,
           borderTopColor: "#ddd",
-          position: "fixed",
-          bottom: 0,
+         
         },
         headerShown: false,
       }}
@@ -54,6 +53,13 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="silverware-fork-knife" size={size} color={color} />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          href: null,
+          title: "Notifications",
         }}
       />
       {/* Ensure there's a matching not-found screen */}

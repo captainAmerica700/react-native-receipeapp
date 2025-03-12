@@ -4,7 +4,7 @@ import SpotlightComponent from "@/src/StaticComponents/Home/Spotlight";
 import TrendingComponent from "@/src/StaticComponents/Home/Trending";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-const Vegan = () => {
+const VeganComponent = () => {
   return (
    <SafeAreaView style={styles.container}>
         <View style={styles.header}>
@@ -18,7 +18,7 @@ const Vegan = () => {
           <SearchBar />
         </View>
         <View>
-          <View style={{ flex: 0.8 }}>
+          <View style={{ flex: 0.7 }}>
             <ScrollView
               style={styles.scrollContent}
               showsVerticalScrollIndicator={false}
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     color: "#25AE87",
     fontWeight: "bold",
     fontSize: 26,
+    width: "60%",
   },
   image: {
     width: 50,
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   scrollContent: {
-    paddingBottom: 10, // Prevent content from getting cut off
+    paddingBottom: 30, // Prevent content from getting cut off
   },
 });
-export default Vegan
+export default VeganComponent

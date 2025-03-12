@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   imageText: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 15,
+    fontWeight: "500",
     width: "100%",
     height: "100%",
     color: "#fff",
