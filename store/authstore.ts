@@ -1,19 +1,28 @@
 import { create } from 'zustand';
 import { getItem, removeItem, setItem } from './mmkv';
+import { useEffect } from 'react';
+
 const TOKEN_KEY = 'authToken';
 
-const useAuthStore = create((set) => ({
-  token: getItem(TOKEN_KEY) || null,
-  isAuthenticated: !!getItem(TOKEN_KEY),
+interface AuthStore {
+  token: string | null;
+  isAuthenticated: boolean;
+  setToken: (token: string) => void;
+  clearToken: () => void;
+}
 
-  setToken: (token:string) => {
+const useAuthStore = create<AuthStore>((set) => ({
+  token: null,
+  isAuthenticated: false,
+
+  setToken: (token: string) => {
     setItem(TOKEN_KEY, token);
-    set({ token, isAuthenticated: true });
+    set((state) => ({ ...state, token, isAuthenticated: true }));  // ✅ No direct mutation
   },
 
   clearToken: () => {
     removeItem(TOKEN_KEY);
-    set({ token: null, isAuthenticated: false });
+    set((state) => ({ ...state, token: null, isAuthenticated: false }));  // ✅ No direct mutation
   },
 }));
 
