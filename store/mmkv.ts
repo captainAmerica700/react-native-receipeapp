@@ -17,6 +17,20 @@ export const setItem = (key: StorageKey, value: StorageValue): void => {
   }
 };
 
-export const getItem = (key: StorageKey): string | null |undefined => storage.getString(key);
+export const getItem = (key: StorageKey): string | null => {
+  const storedValue = storage.getString(key);
+  if (!storedValue) return null;
+
+  try {
+    const parsedData = JSON.parse(storedValue);
+    console.error(" parsedData parsing MMKV data:", parsedData);
+    // Extract the token dynamically (handling varying key names)
+    const sessionKey = Object.keys(parsedData)[0]; // Get first key
+    return parsedData[sessionKey]; // Return the actual token value
+  } catch (error) {
+    console.error("❌ Error parsing MMKV data:", error);
+    return null;
+  }
+};
 
 export const removeItem = (key: StorageKey): void => storage.delete(key);

@@ -10,12 +10,13 @@ import {
 import { BlurView } from "expo-blur";
 import { Link } from "expo-router";
 import foodData from "@/src/constants/foodData";
-
+import { useQuery } from "@tanstack/react-query";
 const { width } = Dimensions.get("window");
 
 
 
 const FoodCarousel = () => {
+  
   return (
     <View style={styles.container}>
       <ScrollView
@@ -23,9 +24,9 @@ const FoodCarousel = () => {
         showsHorizontalScrollIndicator={false}
         style={{width:300}}
       >
-        {foodData.map((item) => (
-          <Link href={`/recipeDetail/${item.id}`}>
-            <View key={item.id} style={styles.card} >
+        {foodData.map((item:any) => (
+          <Link key={item.id} href={`/recipeDetail/${item.id}`}>
+            <View  style={styles.card} >
             <Image
               source={{ uri: item.imageUrl }}
               style={styles.backgroundImage}

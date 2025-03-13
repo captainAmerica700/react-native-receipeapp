@@ -67,7 +67,7 @@ const foodData = [
       id: 5,
       title: "Paneer Tikka",
       description: "Grilled cottage cheese cubes marinated in spicy yogurt-based mixture.",
-      imageUrl: "https://images.pexels.com/photos/5946961/pexels-photo-5946961.jpeg",
+      imageUrl: "https://images.unsplash.com/photo-1701579231320-cc2f7acad3cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFuZWVyJTIwdGlra2F8ZW58MHx8MHx8fDA%3D",
       chef: {
         name: "Chef Meera",
         avatar: "https://source.unsplash.com/50x50/?chef,portrait",
@@ -115,7 +115,7 @@ const foodData = [
       id: 8,
       title: "Chole Bhature",
       description: "Spicy chickpea curry served with deep-fried bread.",
-      imageUrl: "https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg",
+      imageUrl: "https://media.istockphoto.com/id/873539518/photo/deep-fried-bread-spicy-chickpeas-curry-and-salad.jpg?s=1024x1024&w=is&k=20&c=09OHCgh8HINbB3Whd8wFaxzg930GEyRQWhizb5P4ET8=",
       chef: {
         name: "Chef Ravi",
         avatar: "https://source.unsplash.com/50x50/?chef,india",
@@ -159,5 +159,116 @@ const foodData = [
         { id: 30, name: "Spices", quantity: "5g", image: require("@/assets/images/garlic.svg") },
       ],
     },
+    {
+      id: 11,
+      title: "Caesar Salad",
+      description: "A fresh and crunchy salad with romaine lettuce, croutons, and Caesar dressing.",
+      imageUrl: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg",
+      chef: {
+        name: "Chef Lisa",
+        avatar: "https://source.unsplash.com/50x50/?chef,salad",
+        rating: 4.7,
+      },
+      ingredients: [
+        { id: 31, name: "Romaine Lettuce", quantity: "150g", image: require("@/assets/images/chapati.svg") },
+        { id: 32, name: "Croutons", quantity: "50g", image: require("@/assets/images/oil.svg") },
+        { id: 33, name: "Parmesan Cheese", quantity: "30g", image: require("@/assets/images/garlic.svg") },
+      ],
+    },
+    {
+      id: 12,
+      title: "Grilled Salmon",
+      description: "Perfectly grilled salmon with a hint of lemon and herbs.",
+      imageUrl: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg",
+      chef: {
+        name: "Chef Mark",
+        avatar: "https://source.unsplash.com/50x50/?chef,fish",
+        rating: 4.8,
+      },
+      ingredients: [
+        { id: 34, name: "Salmon Fillet", quantity: "200g", image: require("@/assets/images/oil.svg") },
+        { id: 35, name: "Lemon", quantity: "1 slice", image: require("@/assets/images/sauce.svg") },
+        { id: 36, name: "Herbs", quantity: "5g", image: require("@/assets/images/garlic.svg") },
+      ],
+    },
+    {
+      id: 13,
+      title: "Chocolate Cake",
+      description: "A moist and rich chocolate cake topped with ganache.",
+      imageUrl: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hvY29sYXRlJTIwY2FrZXxlbnwwfHwwfHx8MA%3D%3D",
+      chef: {
+        name: "Chef Sophia",
+        avatar: "https://source.unsplash.com/50x50/?chef,dessert",
+        rating: 4.9,
+      },
+      ingredients: [
+        { id: 37, name: "Flour", quantity: "250g", image: require("@/assets/images/chapati.svg") },
+        { id: 38, name: "Cocoa Powder", quantity: "50g", image: require("@/assets/images/oil.svg") },
+        { id: 39, name: "Sugar", quantity: "150g", image: require("@/assets/images/garlic.svg") },
+      ],
+    },{
+      id: 14,
+      title: "Garlic Butter Shrimp",
+      description: "Juicy shrimp sautéed in a rich garlic butter sauce.",
+      imageUrl: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg",
+      chef: {
+        name: "Chef Daniel",
+        avatar: "https://source.unsplash.com/50x50/?chef,seafood",
+        rating: 4.9,
+      },
+      ingredients: [
+        { id: 40, name: "Shrimp", quantity: "200g", image: require("@/assets/images/oil.svg") },
+        { id: 41, name: "Garlic", quantity: "3 cloves", image: require("@/assets/images/sauce.svg") },
+        { id: 42, name: "Butter", quantity: "50g", image: require("@/assets/images/garlic.svg") },
+      ],
+    },
+    {
+      id: 15,
+      title: "French Onion Soup",
+      description: "A warm and comforting soup with caramelized onions and cheese.",
+      imageUrl: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg",
+      chef: {
+        name: "Chef Marie",
+        avatar: "https://source.unsplash.com/50x50/?chef,soup",
+        rating: 4.8,
+      },
+      ingredients: [
+        { id: 43, name: "Onions", quantity: "3 large", image: require("@/assets/images/oil.svg") },
+        { id: 44, name: "Beef Broth", quantity: "500ml", image: require("@/assets/images/sauce.svg") },
+        { id: 45, name: "Cheese", quantity: "100g", image: require("@/assets/images/garlic.svg") },
+      ],
+    },
+    {
+      id: 16,
+      title: "Sushi Rolls",
+      description: "Classic Japanese sushi rolls filled with fresh fish and vegetables.",
+      imageUrl: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3VzaGklMjByb2xsc3xlbnwwfHwwfHx8MA%3D%3D",
+      chef: {
+        name: "Chef Hiroshi",
+        avatar: "https://source.unsplash.com/50x50/?chef,sushi",
+        rating: 4.9,
+      },
+      ingredients: [
+        { id: 46, name: "Rice", quantity: "250g", image: require("@/assets/images/chapati.svg") },
+        { id: 47, name: "Nori Seaweed", quantity: "5 sheets", image: require("@/assets/images/oil.svg") },
+        { id: 48, name: "Salmon", quantity: "100g", image: require("@/assets/images/garlic.svg") },
+      ],
+    },
+    {
+      id: 17,
+      title: "Mango Sticky Rice",
+      description: "A popular Thai dessert made with sweet mangoes and sticky rice.",
+      imageUrl: "https://images.unsplash.com/photo-1711161988375-da7eff032e45?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuZ28lMjBzdGlja3klMjByaWNlfGVufDB8fDB8fHww",
+      chef: {
+        name: "Chef Ananya",
+        avatar: "https://source.unsplash.com/50x50/?chef,thai",
+        rating: 4.7,
+      },
+      ingredients: [
+        { id: 49, name: "Sticky Rice", quantity: "200g", image: require("@/assets/images/chapati.svg") },
+        { id: 50, name: "Mango", quantity: "1 whole", image: require("@/assets/images/oil.svg") },
+        { id: 51, name: "Coconut Milk", quantity: "100ml", image: require("@/assets/images/garlic.svg") },
+      ],
+    }
   ];
   export default foodData;

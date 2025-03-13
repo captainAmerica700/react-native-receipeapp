@@ -7,7 +7,7 @@ import { useRouter } from "expo-router";
 export default function AppEntryComponent() {
   const router = useRouter();
   const onPress = () => {
-    router.push("/Vegan");
+    router.push("/login");
   };
   return (
     <SafeAreaView style={{ position: "relative" }}>

@@ -36,6 +36,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "apiUrl": "http://localhost:8081",
+      "appEnv": "development",
+      "appwritesecretKey": "67d187d9001139f00079"
     }
   }
 }

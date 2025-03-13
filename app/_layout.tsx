@@ -11,7 +11,8 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { Suspense, lazy } from "react";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import HydrateAuth from "@/src/HydrateAuth";
+import FallbackUi from "@/src/StaticComponents/Fallbackui";
+import Toast from "react-native-toast-message";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,26 +32,23 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
-
+ 
   return (
-    <Suspense fallback={"...Loading"}>
-      {/* <HydrateAuth> */}
-        <ThemeProvider
-           value={colorScheme === "light" ? DarkTheme : DefaultTheme}
-    >
-          <Stack screenOptions={{ headerShown: false }} initialRouteName="AppEntryPage">
-          <Stack.Screen
-            name="AppEntryPage"
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
+    <Suspense fallback={<FallbackUi />}>
+      <ThemeProvider value={colorScheme === "light" ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="recipeDetail" options={{ headerShown: true }} />
           <Stack.Screen name="login" options={{ headerShown: false }} />
           <Stack.Screen name="register" options={{ headerShown: false }} />
+          <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
+          
         </Stack>
         <StatusBar style="auto" />
-    </ThemeProvider>
-       {/* </HydrateAuth> */}
+      </ThemeProvider>
+      <Toast />
     </Suspense>
   );
 }

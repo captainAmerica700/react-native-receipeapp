@@ -14,23 +14,25 @@ import {
 } from "react-native";
 import { useLocalSearchParams, useSearchParams } from "expo-router/build/hooks";
 import foodData from "@/src/constants/foodData";
+import { useNavigation } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 const RecipeDetailComponent = () => {
+  const navigation = useNavigation()
   const { id } = useLocalSearchParams();
   const data = foodData.filter((item) => item.id === Number(id));
   return (
     <SafeAreaView style={styles.container}>
       {data.map((item) => (
-        <View style={styles.container1}>
+        <View key={item.id}style={styles.container1}>
           <ImageBackground
             style={styles.image}
             source={{
               uri: `${item.imageUrl}`,
             }}
           >
-            {/* <LinearGradient
-        colors={["transparent", "rgba(21, 15, 15, 0.5)"]}
-        style={styles.overlay}
-      /> */}
+            <View style={{position:'absolute',padding:15}}>  
+            <Ionicons name="arrow-back" size={19} color="white" onPress={() => navigation.goBack()} />
+            </View>
           </ImageBackground>
           <View
             style={{
@@ -64,9 +66,9 @@ const RecipeDetailComponent = () => {
                   viewBox="0 0 24 24"
                   fill="#25AE87"
                   stroke="#25AE87"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-bookmark"
                 >
                   <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
@@ -78,7 +80,7 @@ const RecipeDetailComponent = () => {
                   Ingredients{" "}
                   <Text style={{ color: "#25AE87", fontSize: 10 }}>(12)</Text>
                 </Text>
-                <View style={{ height: 130, padding: 10 }}>
+                <View style={{ height: 160, padding: 10 }}>
                   <ScrollView showsVerticalScrollIndicator={false}>
                     {item.ingredients.map((item) => (
                       <View key={item.id} style={styles.ingredientItem}>
@@ -116,6 +118,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 10,
+    position:'relative'
   },
 
   backgroundImage: {
