@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -8,30 +8,30 @@ import {
   Modal,
   Pressable,
   Dimensions,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import SearchBar from "@/src/StaticComponents/Home/SearchBar";
-import SpotlightComponent from "@/src/StaticComponents/Home/Spotlight";
-import TrendingComponent from "@/src/StaticComponents/Home/Trending";
-import { account } from "@/appwriteConfig";
-import Toast from "react-native-toast-message";
-import { useRouter } from "expo-router";
-const { height } = Dimensions.get("window");
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import SearchBar from '@/src/StaticComponents/Home/SearchBar';
+import SpotlightComponent from '@/src/StaticComponents/Home/Spotlight';
+import TrendingComponent from '@/src/StaticComponents/Home/Trending';
+import { account } from '@/appwriteConfig';
+import Toast from 'react-native-toast-message';
+import { useRouter } from 'expo-router';
+const { height } = Dimensions.get('window');
 export const logoutUser = async (): Promise<void> => {
   try {
-    await account.deleteSession("current"); // Logs out the current session
+    await account.deleteSession('current'); // Logs out the current session
 
     Toast.show({
-      type: "success",
-      text1: "Logged Out",
-      text2: "You have been successfully logged out.",
+      type: 'success',
+      text1: 'Logged Out',
+      text2: 'You have been successfully logged out.',
     });
   } catch (error: any) {
-    console.error("Logout failed:", error);
+    console.error('Logout failed:', error);
     Toast.show({
-      type: "error",
-      text1: "Logout Failed",
-      text2: error.message || "Something went wrong. Please try again.",
+      type: 'error',
+      text1: 'Logout Failed',
+      text2: error.message || 'Something went wrong. Please try again.',
     });
   }
 };
@@ -41,8 +41,8 @@ const VeganComponent = () => {
   const router = useRouter();
   // Dummy user data (replace with actual user data from state/context)
   const user = {
-    name: "John Doe",
-    email: "johndoe@example.com",
+    name: 'John Doe',
+    email: 'johndoe@example.com',
   };
 
   return (
@@ -55,11 +55,11 @@ const VeganComponent = () => {
           onPress={async () => {
             await logoutUser();
             setModalVisible(false);
-            router.push("/login"); // Add this line
+            router.push('/login'); // Add this line
           }}
         >
           <Image
-            source={require("@/assets/images/men.jpg")}
+            source={require('@/assets/images/men.jpg')}
             style={styles.image}
           />
         </Pressable>
@@ -127,16 +127,16 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
   },
   title: {
-    color: "#25AE87",
-    fontWeight: "bold",
+    color: '#25AE87',
+    fontWeight: 'bold',
     fontSize: 26,
-    width: "60%",
+    width: '60%',
   },
   image: {
     width: 50,
@@ -145,24 +145,24 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 10,
-    height:height * 0.6
+    height: height * 0.6,
   },
   modalOverlay: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalContent: {
     width: 300,
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   modalTitle: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 10,
   },
   modalText: {
@@ -170,23 +170,23 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   logoutButton: {
-    backgroundColor: "#d9534f",
+    backgroundColor: '#d9534f',
     padding: 10,
     borderRadius: 5,
     marginTop: 15,
-    width: "100%",
-    alignItems: "center",
+    width: '100%',
+    alignItems: 'center',
   },
   logoutText: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: '#fff',
+    fontWeight: 'bold',
   },
   closeButton: {
     marginTop: 10,
     padding: 10,
   },
   closeText: {
-    color: "#007bff",
+    color: '#007bff',
   },
 });
 

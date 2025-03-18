@@ -1,10 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const HomeScreen = () => {
-  return (
-    <>
-    </>
-  )
-}
+  return <></>;
+};
 
-export default HomeScreen
+export default HomeScreen;

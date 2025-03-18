@@ -15,11 +15,11 @@ const useSignUpAuth = create<AuthStore>((set) => ({
   isAuthenticated: false,
 
   setToken: (token: string) => {
-    set((state) => ({ ...state, token, isAuthenticated: true }));  // ✅ No direct mutation
+    set((state) => ({ ...state, token, isAuthenticated: true })); // ✅ No direct mutation
   },
 
   clearToken: () => {
-    set((state) => ({ ...state, token: null, isAuthenticated: false }));  // ✅ No direct mutation
+    set((state) => ({ ...state, token: null, isAuthenticated: false })); // ✅ No direct mutation
   },
 }));
 

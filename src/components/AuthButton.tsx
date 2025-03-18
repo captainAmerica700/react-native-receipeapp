@@ -13,7 +13,12 @@ const AuthButton: React.FC<Props> = ({ title, onPress }) => (
 );
 
 const styles = StyleSheet.create({
-  button: { backgroundColor: '#007bff', padding: 10, borderRadius: 5, marginVertical: 5 },
+  button: {
+    backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 5,
+    marginVertical: 5,
+  },
   buttonText: { color: '#fff', textAlign: 'center' },
 });
 

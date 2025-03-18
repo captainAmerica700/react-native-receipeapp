@@ -9,7 +9,13 @@ interface Props {
   onChangeText: (text: string) => void;
 }
 
-const TextInputField: React.FC<Props> = ({ placeholder, value, error, secureTextEntry = false, onChangeText }) => (
+const TextInputField: React.FC<Props> = ({
+  placeholder,
+  value,
+  error,
+  secureTextEntry = false,
+  onChangeText,
+}) => (
   <View style={{ marginBottom: 10 }}>
     <TextInput
       placeholder={placeholder}

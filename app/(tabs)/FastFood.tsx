@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   View,
@@ -8,16 +8,16 @@ import {
   Modal,
   Pressable,
   Dimensions,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import SearchBar from "@/src/StaticComponents/Home/SearchBar";
-import SpotlightComponent from "@/src/StaticComponents/Home/Spotlight";
-import TrendingComponent from "@/src/StaticComponents/Home/Trending";
-import { account } from "@/appwriteConfig";
-import Toast from "react-native-toast-message";
-import { useRouter } from "expo-router";
-import useSignUpAuth from "@/store/signUpStore";
-const { height } = Dimensions.get("window");
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import SearchBar from '@/src/StaticComponents/Home/SearchBar';
+import SpotlightComponent from '@/src/StaticComponents/Home/Spotlight';
+import TrendingComponent from '@/src/StaticComponents/Home/Trending';
+import { account } from '@/appwriteConfig';
+import Toast from 'react-native-toast-message';
+import { useRouter } from 'expo-router';
+import useSignUpAuth from '@/store/signUpStore';
+const { height } = Dimensions.get('window');
 const FastFood = () => {
   return (
     <SafeAreaView style={styles.container}>
@@ -51,20 +51,20 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
   },
   title: {
-    color: "#25AE87",
-    fontWeight: "bold",
+    color: '#25AE87',
+    fontWeight: 'bold',
     fontSize: 26,
-    width: "100%",
+    width: '100%',
   },
   scrollContent: {
     paddingBottom: 10,
-    height:height * 0.6
+    height: height * 0.6,
   },
 });
 

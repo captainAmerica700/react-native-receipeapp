@@ -1,7 +1,7 @@
-import React from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
-import SpotlightComponent from "./Spotlight";
-import TrendingComponent from "./Trending";
+import React from 'react';
+import { ScrollView, View, StyleSheet } from 'react-native';
+import SpotlightComponent from './Spotlight';
+import TrendingComponent from './Trending';
 
 const SlideHomeComponent = () => {
   return (

@@ -1,4 +1,3 @@
-
 // import { Redirect } from "expo-router"
 // import { getItem } from "@/store/mmkv"
 // import { ReactNode, useEffect, useState } from "react"
@@ -11,14 +10,13 @@
 // //   const token =  getItem('tokenData')
 // // console.log('token at protec eroute',token)
 
-
 //   useEffect(() => {
 //     const storedToken = getItem("tokenData");
 //     console.log("Token at ProtectedRoute:", storedToken);
 //     setToken(storedToken);
 //   }, []);
 //   if(!token){
-   
+
 //     return <Redirect href="/login" />;
 //   }
 //     return children

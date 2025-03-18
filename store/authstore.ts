@@ -17,12 +17,12 @@ const useAuthStore = create<AuthStore>((set) => ({
 
   setToken: (token: string) => {
     setItem(TOKEN_KEY, token);
-    set((state) => ({ ...state, token, isAuthenticated: true }));  // ✅ No direct mutation
+    set((state) => ({ ...state, token, isAuthenticated: true })); // ✅ No direct mutation
   },
 
   clearToken: () => {
     removeItem(TOKEN_KEY);
-    set((state) => ({ ...state, token: null, isAuthenticated: false }));  // ✅ No direct mutation
+    set((state) => ({ ...state, token: null, isAuthenticated: false })); // ✅ No direct mutation
   },
 }));
 

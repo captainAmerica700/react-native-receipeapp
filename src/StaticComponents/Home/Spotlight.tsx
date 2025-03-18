@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
   Text,
   View,
   StyleSheet,
   ImageBackground,
   Dimensions,
-} from "react-native";
-import Swiper from "react-native-swiper";
-import { LinearGradient } from "expo-linear-gradient";
-import foodData from "@/src/constants/foodData";
-import { Link } from "expo-router";
+} from 'react-native';
+import Swiper from 'react-native-swiper';
+import { LinearGradient } from 'expo-linear-gradient';
+import foodData from '@/src/constants/foodData';
+import { Link } from 'expo-router';
 
-const { width } = Dimensions.get("window");
+const { width } = Dimensions.get('window');
 
 const SpotlightComponent = () => {
   return (
@@ -36,7 +36,7 @@ const SpotlightComponent = () => {
                 style={styles.imageWrapper}
               >
                 <LinearGradient
-                  colors={["transparent", "rgba(0, 0, 0, 0.8)", "rgb(0, 0, 0)"]}
+                  colors={['transparent', 'rgba(0, 0, 0, 0.8)', 'rgb(0, 0, 0)']}
                   style={styles.overlay}
                 />
                 <View style={styles.textContainer}>
@@ -58,20 +58,20 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: "700",
+    fontWeight: '700',
     marginBottom: 10,
     marginLeft: 15,
   },
   swiper: {
     height: 10,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   slide: {
-    justifyContent: "center",
-    alignItems: "center",
-    display: "flex",
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
     paddingHorizontal: 15,
-    overflow: "hidden",
+    overflow: 'hidden',
     borderRadius: 15,
     height: 180,
     paddingBottom: 10,
@@ -80,34 +80,34 @@ const styles = StyleSheet.create({
     width: width * 0.8,
     height: 157,
     borderRadius: 10,
-    overflow: "hidden",
-    alignSelf: "center",
+    overflow: 'hidden',
+    alignSelf: 'center',
   },
   overlay: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
   },
   textContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 10,
     left: 10,
     right: 10,
   },
   imageText: {
     fontSize: 15,
-    fontWeight: "500",
-    color: "#fff",
+    fontWeight: '500',
+    color: '#fff',
   },
   dot: {
-    backgroundColor: "rgba(255,255,255,0.5)",
+    backgroundColor: 'rgba(255,255,255,0.5)',
     width: 8,
     height: 8,
     borderRadius: 4,
     marginHorizontal: 5,
   },
   activeDot: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     width: 10,
     height: 10,
     borderRadius: 5,
