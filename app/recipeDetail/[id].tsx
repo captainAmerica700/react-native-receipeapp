@@ -16,10 +16,26 @@ import { useLocalSearchParams, useSearchParams } from 'expo-router/build/hooks';
 import foodData from '@/src/constants/foodData';
 import { useNavigation } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import useFollowStore from '@/store/FollowStore';
+import Toast from 'react-native-toast-message';
 const RecipeDetailComponent = () => {
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
   const data = foodData.filter((item) => item.id === Number(id));
+  const { follow, chefName, setFollow } = useFollowStore();
+  const handleFollow = (item: string) => {
+   if( item === chefName) {
+    setFollow(0, '');
+    Toast.show({
+      type: 'success',  // This will style it as a success message
+      position: 'top',  // You can change the position to 'top', 'bottom', or 'center'
+      text1: 'Success', // Main message
+      text2: 'Your follow successfully!' // Sub-message (optional)
+    });
+   }else{
+    setFollow(1, item);
+   } 
+  };
   return (
     <SafeAreaView style={styles.container}>
       {data.map((item) => (
@@ -56,8 +72,21 @@ const RecipeDetailComponent = () => {
                   />
                   <Text style={styles.chefName}>{item.chef.name} </Text>
                 </View>
-                <TouchableOpacity style={styles.button}>
-                  <Text style={styles.buttonText}>Follow +</Text>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    item.chef.name === chefName ?   null:styles.activebutton,
+                  ]}
+                  onPress={() => handleFollow(item.chef.name)}
+                >
+                  <Text
+                    style={[
+                      styles.buttonText,
+                      item.chef.name === chefName ? styles.activeText : null,
+                    ]}
+                  >
+                   {follow ? `Follow +`:`Followed`} 
+                  </Text>
                 </TouchableOpacity>
               </View>
             </BlurView>
@@ -82,7 +111,7 @@ const RecipeDetailComponent = () => {
               <Text style={styles.description}>{item.description}</Text>
               <View style={styles.ingredients}>
                 <Text style={styles.foodtext}>
-                  Ingredients{' '}
+                  Ingredients
                   <Text style={{ color: '#25AE87', fontSize: 10 }}>(12)</Text>
                 </Text>
                 <View style={{ height: 160, padding: 10 }}>
@@ -252,6 +281,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#25AE87',
     fontWeight: 'bold',
+  },
+  activeText: {
+    color: 'white',
+  },
+  activebutton:{
+    backgroundColor: 'black',
   },
 });
 export default RecipeDetailComponent;

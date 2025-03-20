@@ -10,16 +10,13 @@ import {
 import { BlurView } from 'expo-blur';
 import { Link } from 'expo-router';
 import foodData from '@/src/constants/foodData';
-import { useQuery } from '@tanstack/react-query';
+import useFilterStore from '@/store/useFilterStoreVegan';
 const { width } = Dimensions.get('window');
 
-{
-  {
-    width;
-  }
-}
-
 const FoodCarousel = () => {
+  const {filter} = useFilterStore()
+
+  const data = foodData.filter(item=> item.category.includes(filter))
   return (
     <View style={styles.container}>
       <ScrollView
@@ -27,7 +24,7 @@ const FoodCarousel = () => {
         showsHorizontalScrollIndicator={false}
         style={{ width: 300 }}
       >
-        {foodData.map((item: any) => (
+        {(data ? data : foodData  ).map((item: any) => (
           <Link key={item.id} href={`/recipeDetail/${item.id}`}>
             <View style={styles.card}>
               <Image

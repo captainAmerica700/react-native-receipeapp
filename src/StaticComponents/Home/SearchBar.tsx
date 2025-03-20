@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import {
   ScrollView,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  TouchableWithoutFeedback,Text, View, StyleSheet, TextInput, FlatList
 } from 'react-native';
-import { Text, View, StyleSheet, TextInput, FlatList } from 'react-native';
 import foodData from '@/src/constants/foodData';
 import { Link } from 'expo-router';
 const SearchBar = () => {
-  const [query, setQuery] = useState<Number | null>();
+  // const [query, setQuery] = useState<Number | null>();
   const [data, setData] = useState('');
   const filteredData = foodData.filter((item) =>
     item.title.toLowerCase().includes(data.toLowerCase()),
@@ -36,10 +35,10 @@ const SearchBar = () => {
               renderItem={({ item }) => (
                 <TouchableOpacity
                   style={styles.resultItem}
-                  onPress={() => setData((prev) => '')}
+                  // onPress={() => setData((prev) => '')}
                 >
                   <Link href={`/recipeDetail/${item.id}`}>
-                    <Text style={{ fontSize: 10 }}>{item.title}</Text>
+                    <Text style={{ fontSize: 10 ,backgroundColor:'#ACD3A8',color:'white',width:'100%',paddingHorizontal:10}}>{item.title}</Text>
                   </Link>
                 </TouchableOpacity>
               )}

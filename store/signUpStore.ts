@@ -15,11 +15,20 @@ const useSignUpAuth = create<AuthStore>((set) => ({
   isAuthenticated: false,
 
   setToken: (token: string) => {
-    set((state) => ({ ...state, token, isAuthenticated: true })); // ✅ No direct mutation
+    set((state) => {
+    const NewState=  { ...state, token, isAuthenticated: true }
+    console.log('this is the new state we are using the store', NewState);
+    return NewState
+    }); // ✅ No direct mutation
+    
   },
 
   clearToken: () => {
-    set((state) => ({ ...state, token: null, isAuthenticated: false })); // ✅ No direct mutation
+    set((state) => {
+      const NewState = { ...state, token: null, isAuthenticated: false }
+      console.log('this is the new state after the user logs out', NewState);
+      return NewState
+    }); // ✅ No direct mutation
   },
 }));
 

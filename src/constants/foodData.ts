@@ -6,6 +6,7 @@ const foodData = [
       'A classic Italian pasta dish with rich tomato sauce and fresh basil.',
     imageUrl:
       'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg',
+    category: 'Pasta & Noodles',
     chef: {
       name: 'Chef John',
       avatar: 'https://source.unsplash.com/50x50/?chef',
@@ -39,6 +40,7 @@ const foodData = [
       'A hot and cheesy pizza topped with spicy jalapeños and pepperoni.',
     imageUrl:
       'https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg',
+    category: 'Pizza & Noodles',
     chef: {
       name: 'Chef Emma',
       avatar: 'https://source.unsplash.com/50x50/?cook',
@@ -76,6 +78,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,portrait',
       rating: 4.7,
     },
+    category: 'Fast Food',
     ingredients: [
       {
         id: 7,
@@ -109,6 +112,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,india',
       rating: 4.9,
     },
+    category: 'Main Courses (Entrees)',
     ingredients: [
       {
         id: 10,
@@ -142,6 +146,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,portrait',
       rating: 4.8,
     },
+    category: 'Main Courses (Entrees)',
     ingredients: [
       {
         id: 13,
@@ -175,6 +180,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,india',
       rating: 5.0,
     },
+    category: 'Main Courses (Entrees)',
     ingredients: [
       {
         id: 16,
@@ -208,6 +214,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,portrait',
       rating: 4.7,
     },
+    category: 'Breakfast',
     ingredients: [
       {
         id: 19,
@@ -240,6 +247,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,india',
       rating: 4.8,
     },
+    category: 'Breakfast',
     ingredients: [
       {
         id: 22,
@@ -272,6 +280,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,portrait',
       rating: 4.9,
     },
+    category: 'Main Courses (Entrees)',
     ingredients: [
       {
         id: 25,
@@ -305,6 +314,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,portrait',
       rating: 4.6,
     },
+    category: 'Breakfast',
     ingredients: [
       {
         id: 28,
@@ -338,6 +348,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,salad',
       rating: 4.7,
     },
+    category: 'Healthy & Low-Calorie',
     ingredients: [
       {
         id: 31,
@@ -370,6 +381,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,fish',
       rating: 4.8,
     },
+    category: 'Main Courses (Entrees)',
     ingredients: [
       {
         id: 34,
@@ -402,6 +414,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,dessert',
       rating: 4.9,
     },
+    category: 'Desserts',
     ingredients: [
       {
         id: 37,
@@ -434,6 +447,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,seafood',
       rating: 4.9,
     },
+    category: 'Appetizers & Snacks',
     ingredients: [
       {
         id: 40,
@@ -467,6 +481,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,soup',
       rating: 4.8,
     },
+    category: 'Soups',
     ingredients: [
       {
         id: 43,
@@ -500,6 +515,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,sushi',
       rating: 4.9,
     },
+    category: 'Sandwiches & Wraps',
     ingredients: [
       {
         id: 46,
@@ -533,6 +549,7 @@ const foodData = [
       avatar: 'https://source.unsplash.com/50x50/?chef,thai',
       rating: 4.7,
     },
+    category: 'side dish',
     ingredients: [
       {
         id: 49,

@@ -3,7 +3,6 @@ import TextInputField from '@/src/components/TextInputField';
 import useAuthForm from '@/src/hooks/useAuthForm';
 import { registerSchema } from '@/src/schemas/registerScemas';
 import { Stack, useRouter } from 'expo-router';
-import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { account } from '@/appwriteConfig';
 import Toast from 'react-native-toast-message';

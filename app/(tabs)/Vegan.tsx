@@ -16,6 +16,8 @@ import TrendingComponent from '@/src/StaticComponents/Home/Trending';
 import { account } from '@/appwriteConfig';
 import Toast from 'react-native-toast-message';
 import { useRouter } from 'expo-router';
+import useSignUpAuth from '@/store/signUpStore';
+import TrendingMenu from '@/src/StaticComponents/Home/TrendingMenu';
 const { height } = Dimensions.get('window');
 export const logoutUser = async (): Promise<void> => {
   try {
@@ -44,24 +46,37 @@ const VeganComponent = () => {
     name: 'John Doe',
     email: 'johndoe@example.com',
   };
-
+  const {
+    container,
+    header,
+    title,
+    image,
+    scrollContent,
+    modalOverlay,
+    modalContent,
+    modalTitle,
+    modalText,
+    logoutButton,
+    logoutText,
+    closeText,
+    closeButton,
+  } = styles;
+  const { clearToken } = useSignUpAuth();
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={container}>
       {/* Header Section */}
-      <View style={styles.header}>
-        <Text style={styles.title}>Discover Best Recipes</Text>
+      <View style={header}>
+        <Text style={title}>Discover Best Recipes</Text>
         {/* Clickable Profile Image */}
         <Pressable
           onPress={async () => {
             await logoutUser();
             setModalVisible(false);
+            clearToken();
             router.push('/login'); // Add this line
           }}
         >
-          <Image
-            source={require('@/assets/images/men.jpg')}
-            style={styles.image}
-          />
+          <Image source={require('@/assets/images/men.jpg')} style={image} />
         </Pressable>
       </View>
 
@@ -69,13 +84,12 @@ const VeganComponent = () => {
       <View style={{ paddingBottom: 20 }}>
         <SearchBar />
       </View>
-
+      <View>
+        <TrendingMenu />
+      </View>
       {/* Scrollable Content */}
       <View>
-        <ScrollView
-          style={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-        >
+        <ScrollView style={scrollContent} showsVerticalScrollIndicator={false}>
           <SpotlightComponent />
           <TrendingComponent />
         </ScrollView>
@@ -88,30 +102,30 @@ const VeganComponent = () => {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
+        <View style={modalOverlay}>
+          <View style={modalContent}>
             {/* User Details */}
-            <Text style={styles.modalTitle}>User Info</Text>
-            <Text style={styles.modalText}>Name: {user.name}</Text>
-            <Text style={styles.modalText}>Email: {user.email}</Text>
+            <Text style={modalTitle}>User Info</Text>
+            <Text style={modalText}>Name: {user.name}</Text>
+            <Text style={modalText}>Email: {user.email}</Text>
 
             {/* Logout Button */}
             <Pressable
-              style={styles.logoutButton}
+              style={logoutButton}
               onPress={async () => {
                 await logoutUser();
                 setModalVisible(false);
               }}
             >
-              <Text style={styles.logoutText}>Sign Out</Text>
+              <Text style={logoutText}>Sign Out</Text>
             </Pressable>
 
             {/* Close Modal Button */}
             <Pressable
-              style={styles.closeButton}
+              style={closeButton}
               onPress={() => setModalVisible(false)}
             >
-              <Text style={styles.closeText}>Close</Text>
+              <Text style={closeText}>Close</Text>
             </Pressable>
           </View>
         </View>

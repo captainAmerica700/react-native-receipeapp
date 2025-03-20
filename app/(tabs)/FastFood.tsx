@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Text,
   View,
   StyleSheet,
-  Image,
   ScrollView,
-  Modal,
-  Pressable,
   Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SearchBar from '@/src/StaticComponents/Home/SearchBar';
 import SpotlightComponent from '@/src/StaticComponents/Home/Spotlight';
 import TrendingComponent from '@/src/StaticComponents/Home/Trending';
-import { account } from '@/appwriteConfig';
-import Toast from 'react-native-toast-message';
-import { useRouter } from 'expo-router';
-import useSignUpAuth from '@/store/signUpStore';
 const { height } = Dimensions.get('window');
 const FastFood = () => {
   return (
