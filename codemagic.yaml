@@ -8,7 +8,7 @@ workflows:
       cocoapods: default
     scripts:
       # Install dependencies
-      - npm install
+      - npm install --legacy-peer-deps
       # Install iOS dependencies
       - cd ios && pod install && cd ..
       # Build for iOS Simulator (Debug mode)
