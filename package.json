@@ -14,7 +14,9 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "format": "prettier --write .",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "storybook": "node ./storybook/index.mjs"
+
   },
   "jest": {
     "preset": "jest-expo"
@@ -26,6 +28,9 @@
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/drawer": "^7.1.2",
     "@react-navigation/native": "^7.0.15",
+    "@storybook/addon-ondevice-actions": "^8.6.2",
+    "@storybook/addon-ondevice-knobs": "^7.6.20",
+    "@storybook/react-native": "^8.6.2",
     "@tanstack/react-query": "^5.67.3",
     "appwrite": "^17.0.1",
     "expo": "~52.0.37",

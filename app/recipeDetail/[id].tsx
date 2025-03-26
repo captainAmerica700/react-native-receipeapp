@@ -1,7 +1,5 @@
 import { BlurView } from 'expo-blur';
-import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { Bookmark } from 'lucide-react-native';
 import {
   Image,
   ImageBackground,
@@ -12,7 +10,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { useLocalSearchParams, useSearchParams } from 'expo-router/build/hooks';
+import { useLocalSearchParams } from 'expo-router/build/hooks';
 import foodData from '@/src/constants/foodData';
 import { useNavigation } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -36,6 +34,7 @@ const RecipeDetailComponent = () => {
     setFollow(1, item);
    } 
   };
+  
   return (
     <SafeAreaView style={styles.container}>
       {data.map((item) => (

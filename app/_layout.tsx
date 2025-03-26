@@ -6,7 +6,7 @@ import {
   DefaultTheme,
 } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import FallbackUi from '@/src/StaticComponents/Fallbackui';
@@ -27,7 +27,8 @@ export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
-
+  const segments = useSegments();
+  const router = useRouter();
   // Hide the splash screen once fonts are loaded
   useEffect(() => {
     if (fontsLoaded) {
@@ -39,32 +40,24 @@ export default function RootLayout() {
   if (!fontsLoaded) {
     return null;
   }
+  useEffect(() => {
+    const inAuthGroup = segments[0] === '(tabs)';
+    if (!inAuthGroup && !isAuthenticated) {
+      router.replace('/login');
+    }
+  }, [isAuthenticated]);
 
   return (
     <Suspense fallback={<FallbackUi />}>
       {/* Theme provider based on color scheme */}
       <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
         <Stack screenOptions={{ headerShown: false }}>
-          {/* Conditionally render screens based on authentication status */}
-          {isAuthenticated ? (
-            // Authenticated screens (e.g., Home, Profile)
-            <>
-              <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen
-                name="recipeDetail"
-                options={{ headerShown: true }}
-              />
-              <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-            </>
-          ) : (
-            // Unauthenticated screens (e.g., Login, Register)
-            <>
-              <Stack.Screen name="login" options={{ headerShown: false }} />
-              <Stack.Screen name="register" options={{ headerShown: false }} />
-            </>
-          )}
-
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="recipeDetail" options={{ headerShown: true }} />
+          <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+          <Stack.Screen name="login" options={{ headerShown: false }} />
+          <Stack.Screen name="register" options={{ headerShown: false }} />
           {/* Fallback screen for not found route */}
           <Stack.Screen name="+not-found" />
         </Stack>
