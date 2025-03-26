@@ -1,18 +1,17 @@
 workflows:
-  react-native-ios-simulator:
-    name: React Native iOS Simulator Build
+  expo-ios-simulator:
+    name: Expo iOS Simulator Build
     environment:
-      # Node.js version (required for React Native)
       node: 18
-      # CocoaPods version (for iOS)
-      cocoapods: default
+      xcode: latest
     scripts:
       # Install dependencies
       - npm install --legacy-peer-deps
+      # Generate ios/ directory (critical for Expo)
+      - npx expo prebuild
       # Install iOS dependencies
       - cd ios && pod install && cd ..
-      # Build for iOS Simulator (Debug mode)
-      - npx react-native run-ios --simulator="iPhone 15" --configuration Debug
+      # Build and run on iOS Simulator
+      - npx react-native run-ios --simulator="iPhone 15"
     artifacts:
-      # Optional: Save the built .app bundle (for debugging)
       - ios/build/Build/Products/**/*.app
