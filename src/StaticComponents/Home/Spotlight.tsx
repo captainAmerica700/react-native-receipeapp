@@ -29,10 +29,10 @@ const SpotlightComponent = () => {
         containerStyle={styles.swiper}
       >
         {foodData?.slice(0, 5).map((item) => (
-          <Link key={item.id} href={`/recipeDetail/${item.id}`}>
+          <Link key={item.id} href={`/recipeDetail/${item.id}`} replace>
             <View style={styles.slide}>
               <ImageBackground
-                source={item?.imageUrl}
+                source={{ uri: String(item?.imageUrl) }}
                 style={styles.imageWrapper}
               >
                 <LinearGradient

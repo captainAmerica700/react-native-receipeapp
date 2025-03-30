@@ -22,13 +22,13 @@ const FoodCarousel = () => {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ width: 300 }}
+        style={{ width: 350}}
       >
         {(data ? data : foodData  ).map((item: any) => (
-          <Link key={item.id} href={`/recipeDetail/${item.id}`}>
+          <Link key={item.id} href={`/recipeDetail/${item.id}`} replace style={{marginRight:15,overflow:'hidden'}}>
             <View style={styles.card}>
               <Image
-                source={{ uri: item.imageUrl }}
+                source={{ uri: item.imageUrl}}
                 style={styles.backgroundImage}
               />
               <View style={styles.overlay} />
@@ -64,12 +64,11 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    width: width * 0.55,
+    width: width * 0.42,
     height: 200,
     borderRadius: 12,
     overflow: 'hidden',
     elevation: 4,
-    marginRight: 15, // ✅ Ensure spacing between cards
   },
   backgroundImage: {
     width: '100%',
@@ -108,6 +107,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     alignItems: 'center',
+    
   },
   rating: {
     fontSize: 14,

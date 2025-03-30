@@ -18,6 +18,7 @@ import Toast from 'react-native-toast-message';
 import { useRouter } from 'expo-router';
 import useSignUpAuth from '@/store/signUpStore';
 import TrendingMenu from '@/src/StaticComponents/Home/TrendingMenu';
+import FallbackUi from '@/src/StaticComponents/Fallbackui';
 const { height } = Dimensions.get('window');
 export const logoutUser = async (): Promise<void> => {
   try {

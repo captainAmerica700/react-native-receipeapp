@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import {
   ScrollView,
   TouchableOpacity,
-  TouchableWithoutFeedback,Text, View, StyleSheet, TextInput, FlatList
+  TouchableWithoutFeedback,
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  FlatList,
 } from 'react-native';
 import foodData from '@/src/constants/foodData';
 import { Link } from 'expo-router';
@@ -25,25 +30,29 @@ const SearchBar = () => {
       </TouchableWithoutFeedback>
       <View style={{ position: 'relative' }}>
         {data && filteredData.length > 0 && (
-          <ScrollView
+          <FlatList
             style={styles.resultsContainer}
+            data={filteredData}
+            keyExtractor={(item, index) => index.toString()}
             showsVerticalScrollIndicator={false}
-          >
-            <FlatList
-              data={filteredData}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  style={styles.resultItem}
-                  // onPress={() => setData((prev) => '')}
-                >
-                  <Link href={`/recipeDetail/${item.id}`}>
-                    <Text style={{ fontSize: 10 ,backgroundColor:'#ACD3A8',color:'white',width:'100%',paddingHorizontal:10}}>{item.title}</Text>
-                  </Link>
-                </TouchableOpacity>
-              )}
-            />
-          </ScrollView>
+            renderItem={({ item }) => (
+              <TouchableOpacity style={styles.resultItem}>
+                <Link href={`/recipeDetail/${item.id}`}>
+                  <Text
+                    style={{
+                      fontSize: 10,
+                      backgroundColor: '#ACD3A8',
+                      color: 'white',
+                      width: '100%',
+                      paddingHorizontal: 10,
+                    }}
+                  >
+                    {item.title}
+                  </Text>
+                </Link>
+              </TouchableOpacity>
+            )}
+          />
         )}
       </View>
     </View>

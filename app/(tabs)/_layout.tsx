@@ -59,18 +59,24 @@ export default function TabsLayout() {
               size={size}
               color={color}
             />
+            
           ),
         }}
       />
       <Tabs.Screen
-        name="notifications"
+        name="recipeDetail/[id]"
         options={{
           href: null,
-          title: 'Notifications',
+          title: 'recipeDetail',
         }}
       />
-      {/* Ensure there's a matching not-found screen */}
-      <Tabs.Screen name="+not-found" />
+      <Tabs.Screen
+        name="User"
+        options={{
+          href: null,
+          title: 'User',
+        }}
+      />
     </Tabs>
   );
 }

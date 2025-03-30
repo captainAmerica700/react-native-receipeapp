@@ -6,7 +6,7 @@ interface ButtonProps {
   onPress?: () => void;
   style?: object;
 }
-const Button = ({ style, children, onPress, ...rest }: ButtonProps) => {
+const   Button = ({ style, children, onPress, ...rest }: ButtonProps) => {
   return (
     <TouchableOpacity onPress={onPress} {...rest} style={style}>
       <Text

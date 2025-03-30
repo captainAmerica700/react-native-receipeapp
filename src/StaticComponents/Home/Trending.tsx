@@ -21,41 +21,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  imageWrapper: {
-    width: '100%',
-    height: 157,
-    borderRadius: 10,
-    marginTop: 10,
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-    borderRadius: 10,
-    padding: 10,
-  },
-  overlay: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%', // Covers the full image
-    display: 'flex',
-    alignSelf: 'center',
-  },
-  imageText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    width: '100%',
-    height: '100%',
-    color: '#fff',
-  },
-  textContainer: {
-    position: 'absolute',
-    bottom: 10, // Adjusts text position
-    left: 10,
-    right: 10,
-  },
 });
 
 export default TrendingComponent;
