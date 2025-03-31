@@ -1,5 +1,5 @@
 import { BlurView } from 'expo-blur';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   ImageBackground,
@@ -9,6 +9,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import { useLocalSearchParams } from 'expo-router/build/hooks';
 import foodData from '@/src/constants/foodData';
@@ -17,11 +18,31 @@ import { Ionicons } from '@expo/vector-icons';
 import useFollowStore from '@/store/FollowStore';
 import Toast from 'react-native-toast-message';
 import { Svg, Path } from 'react-native-svg';
+
+interface filteredData {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  category: string;
+  chef: {
+    name: string;
+    avatar: string;
+    rating: number;
+  };
+  ingredients: {
+    id: number;
+    name: string;
+    quantity: string;
+    image: any;
+  }[];
+}
 const RecipeDetailComponent = () => {
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
-  const data = foodData.filter((item) => item.id === Number(id));
+  const [data, setData] = useState<filteredData | null>(null);
   const { follow, chefName, setFollow } = useFollowStore();
+  const [loading, setLoading] = useState(true);
   const handleFollow = (item: string) => {
     if (item === chefName) {
       setFollow(0, '');
@@ -35,21 +56,36 @@ const RecipeDetailComponent = () => {
       setFollow(1, item);
     }
   };
-  console.log(data, 'this is data in id');
+  useEffect(() => {
+    // Simulate a slight delay to show the loader
+    setTimeout(() => {
+      const filteredData = foodData.find((item) => item.id === Number(id));
+      setData(filteredData || null);
+      setLoading(false);
+    }, 1000); // Simulated delay
+  }, [id]);
+  if (loading) {
+    return (
+      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#25AE87" />
+      </SafeAreaView>
+    );
+  }
   return (
+
     <SafeAreaView style={styles.container}>
-      {data.map((item) => (
-        <View key={item.id} style={styles.container1}>
+      {data && (
+        <View key={data.id} style={styles.container1}>
           <ImageBackground
             style={styles.image}
             source={{
-              uri: item.imageUrl,
+              uri: data.imageUrl,
             }}
           >
-            <View style={{ position: 'absolute', padding: 15 }}>
+            <View style={{ position: 'absolute', padding: 15, top: 50 }}>
               <Ionicons
                 name="arrow-back"
-                size={19}
+                size={28}
                 color="white"
                 onPress={() => navigation.goBack()}
               />
@@ -63,26 +99,26 @@ const RecipeDetailComponent = () => {
               justifyContent: 'center',
             }}
           >
-            <BlurView style={styles.bottomContainer} intensity={30} tint="dark">
+            <BlurView style={styles.bottomContainer} intensity={40} tint="dark">
               <View style={styles.infoContainer}>
                 <View style={styles.chefContainer}>
                   <Image
-                    source={{ uri: 'item.chef.avatar' }}
+                    source={{ uri: data.chef.avatar }}
                     style={styles.chefAvatar}
                   />
-                  <Text style={styles.chefName}>{item.chef.name} </Text>
+                  <Text style={styles.chefName}>{data.chef.name} </Text>
                 </View>
                 <TouchableOpacity
                   style={[
                     styles.button,
-                    item.chef.name === chefName ? null : styles.activebutton,
+                    data.chef.name === chefName ? null : styles.activebutton,
                   ]}
-                  onPress={() => handleFollow(item.chef.name)}
+                  onPress={() => handleFollow(data.chef.name)}
                 >
                   <Text
                     style={[
                       styles.buttonText,
-                      item.chef.name === chefName ? styles.activeText : null,
+                      data.chef.name === chefName ? styles.activeText : null,
                     ]}
                   >
                     {follow ? `Follow +` : `Followed`}
@@ -92,7 +128,7 @@ const RecipeDetailComponent = () => {
             </BlurView>
             <View style={styles.foodContainer}>
               <View style={styles.foodtitle}>
-                <Text style={styles.foodtext}>{item.title}</Text>
+                <Text style={styles.foodtext}>{data.title}</Text>
                 <Svg
                   width="24"
                   height="24"
@@ -106,7 +142,7 @@ const RecipeDetailComponent = () => {
                   <Path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
                 </Svg>
               </View>
-              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.description}>{data.description}</Text>
               <View style={styles.ingredients}>
                 <Text style={styles.foodtext}>
                   Ingredients
@@ -114,17 +150,17 @@ const RecipeDetailComponent = () => {
                 </Text>
                 <View style={{ height: 160, padding: 10 }}>
                   <ScrollView showsVerticalScrollIndicator={false}>
-                    {item.ingredients.map((item) => (
-                      <View key={item.id} style={styles.ingredientItem}>
-                        <Image
+                    {data.ingredients.map((data) => (
+                      <View key={data.id} style={styles.ingredientItem}>
+                        {/* <Image
                           source={{ uri: item.image }}
                           style={styles.ingredientImage}
-                        />
+                        /> */}
 
-                        <Text style={styles.ingredientText}>{item.name}</Text>
+                        <Text style={styles.ingredientText}>{data.name}</Text>
 
                         <Text style={styles.ingredientQuantity}>
-                          {item.quantity}
+                          {data.quantity}
                         </Text>
                       </View>
                     ))}
@@ -134,7 +170,7 @@ const RecipeDetailComponent = () => {
             </View>
           </View>
         </View>
-      ))}
+      )}
     </SafeAreaView>
   );
 };
@@ -142,6 +178,7 @@ const RecipeDetailComponent = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'#f7f7f7'
   },
   container1: {
     height: 300,
@@ -251,7 +288,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   ingredients: {
-    marginTop: 20,
+    marginTop: 40,
     color: '#8d8f8e',
     fontSize: 12,
   },
@@ -259,7 +296,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', // ✅ Align Image, Name, and Quantity in a row
     alignItems: 'center',
     justifyContent: 'space-between', // ✅ Space between elements
-    paddingRight: 15,
+    padding: 15,
     shadowColor: '#a8a8a8',
     backgroundColor: '#fff',
     borderRadius: 10,

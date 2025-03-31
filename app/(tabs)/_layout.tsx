@@ -70,13 +70,6 @@ export default function TabsLayout() {
           title: 'recipeDetail',
         }}
       />
-      <Tabs.Screen
-        name="User"
-        options={{
-          href: null,
-          title: 'User',
-        }}
-      />
     </Tabs>
   );
 }

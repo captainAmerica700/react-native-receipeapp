@@ -132,7 +132,6 @@ const foodData = [
         quantity: '2',
         image: require('@/assets/images/garlic.svg'),
       },
-      
     ],
   },
   {

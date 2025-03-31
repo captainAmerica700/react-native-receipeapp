@@ -1,5 +1,5 @@
 import Button from '@/src/components/button';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ImageBackground, Text, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,6 +9,11 @@ export default function AppEntryComponent() {
   const onPress = () => {
     router.push('/login');
   };
+  useEffect(()=>{
+    setTimeout(()=>{
+      router.push('/(tabs)/Vegan');
+    },6000)
+  },[])
   return (
     <SafeAreaView style={{ position: 'relative' }}>
       <ImageBackground

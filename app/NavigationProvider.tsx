@@ -35,7 +35,7 @@ const NavigationProvider: React.FC<NaviGationProviderProps> = ({
 
       if (!isAuthenticated && !inAuthGroup) {
         router.replace('/(tabs)/Vegan');
-      } else if (isAuthenticated && inAuthGroup) {
+      } else if   (isAuthenticated && inAuthGroup) {
         router.replace('/(tabs)/Vegan');
       }
     }

@@ -8,7 +8,7 @@ import NavigationProvider from './NavigationProvider'; // Import the new provide
 const RootLayout: React.FC = () => {
   return (
     <Suspense fallback={<FallbackUi />}>
-      <NavigationProvider>
+      {/* <NavigationProvider> */}
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
           <Stack.Screen name="(tabs)" />
@@ -17,7 +17,7 @@ const RootLayout: React.FC = () => {
         </Stack>
         <StatusBar style="auto" />
         <Toast />
-      </NavigationProvider>
+      {/* </NavigationProvider> */}
     </Suspense>
   );
 };
