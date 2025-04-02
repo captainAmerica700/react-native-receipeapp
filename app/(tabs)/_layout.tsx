@@ -1,8 +1,10 @@
 import 'react-native-reanimated'; // Ensure this is the first import
-import { Tabs } from 'expo-router';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Tabs, useRouter } from 'expo-router';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 
 export default function TabsLayout() {
+  const router = useRouter()
   return (
     <Tabs
       initialRouteName="Vegan"
@@ -74,6 +76,15 @@ export default function TabsLayout() {
         options={{
           href: null,
           title: 'Profile',
+        }}
+      />
+       <Tabs.Screen
+        name="SearchBar"
+        options={{
+          title: 'Search',
+          headerShown: true,
+          headerTitleAlign: 'center',
+          href: null,
         }}
       />
     </Tabs>

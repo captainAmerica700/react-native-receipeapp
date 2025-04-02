@@ -17,6 +17,7 @@ const NavigationProvider: React.FC<NavigationProviderProps> = ({
   const [fontLoaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+  const [initialAuthCheckDone, setInitialAuthCheckDone] = useState(false);
 
   useEffect(() => {
     if (fontLoaded) {
@@ -32,11 +33,12 @@ const NavigationProvider: React.FC<NavigationProviderProps> = ({
 
     if (!isAuthenticated && !inAuthGroup) {
       router.replace('/(auth)/login');
-    } else if (isAuthenticated && inAuthGroup) {
-      // Only redirect to Vegan if the user is logging in, NOT every time
+    } else if (isAuthenticated && inAuthGroup && !initialAuthCheckDone) {
+      // Only redirect to Vegan on initial auth check
       router.replace('/(tabs)/Vegan');
+      setInitialAuthCheckDone(true);
     }
-  }, [isAuthenticated, fontLoaded]);
+  }, [isAuthenticated, fontLoaded, segments]);
 
   if (!fontLoaded) {
     return null; // Show loading screen or fallback UI

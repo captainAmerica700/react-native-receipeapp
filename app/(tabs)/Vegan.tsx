@@ -5,20 +5,21 @@ import {
   StyleSheet,
   ScrollView,
   Dimensions,
+  Pressable,
 } from 'react-native';
 import SpotlightComponent from '@/src/StaticComponents/Home/Spotlight';
 import TrendingComponent from '@/src/StaticComponents/Home/Trending';
 import TrendingMenu from '@/src/StaticComponents/Home/TrendingMenu';
-
-import SearchBar from '@/src/StaticComponents/Home/SearchBar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import UserComponent from '@/src/StaticComponents/Home/ProfileInfo/User';
+import { Link, useRouter } from 'expo-router';
+import { TextInput } from 'react-native';
 
 const { height } = Dimensions.get('window');
 
 const VeganComponent = () => {
   const { container, header, title, scrollContent } = styles;
-
+const router=useRouter()
   return (
     <SafeAreaView style={container}>
       {/* Header Section */}
@@ -30,7 +31,15 @@ const VeganComponent = () => {
 
       {/* Search Bar */}
       <View style={{ paddingBottom: 20 }}>
-        <SearchBar />
+        
+          <Pressable onPress={()=>router.push('/SearchBar')}>
+            <TextInput
+              placeholder="... Search here"
+              style={styles.SearchBar}
+              editable={false} // Makes the TextInput non-editable
+            />
+          </Pressable>
+        
       </View>
       <View>
         <TrendingMenu />
@@ -72,6 +81,18 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingBottom: 10,
     height: height * 0.6,
+  },
+  SearchBar: {
+    padding: 10,
+    height: 50,
+    width: '100%',
+    backgroundColor: '#EFEFEF',
+    borderRadius: 10,
+    fontSize: 12,
+    // outline: "none",
+    marginTop: 10,
+    borderColor: '#e5e7e0',
+    borderWidth: 1,
   },
 });
 

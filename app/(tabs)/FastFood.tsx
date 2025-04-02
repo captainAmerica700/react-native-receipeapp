@@ -7,9 +7,9 @@ import {
   Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import SearchBar from '@/src/StaticComponents/Home/SearchBar';
 import SpotlightComponent from '@/src/StaticComponents/Home/Spotlight';
 import TrendingComponent from '@/src/StaticComponents/Home/Trending';
+import SearchBar from './SearchBar';
 const { height } = Dimensions.get('window');
 const FastFood = () => {
   return (

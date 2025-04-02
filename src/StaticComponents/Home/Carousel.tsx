@@ -15,6 +15,7 @@ import useFilterStore from '@/store/useFilterStoreVegan';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Loader } from '@/src/utils/Loader';
 import _ from 'lodash';
+import Card from '@/src/ReusableComponent/Card';
 const { width } = Dimensions.get('window');
 const FoodCarousel = () => {
   const { filter } = useFilterStore();
@@ -46,30 +47,7 @@ const FoodCarousel = () => {
             replace
             style={{ marginRight: 15, overflow: 'hidden' }}
           >
-            <View style={styles.card}>
-              <Image
-                source={{ uri: item.imageUrl }}
-                style={styles.backgroundImage}
-              />
-              <View style={styles.overlay} />
-              <Text style={styles.title}>{item.title}</Text>
-              <BlurView
-                style={styles.bottomContainer}
-                intensity={40}
-                tint="dark"
-              >
-                <View style={styles.infoContainer}>
-                  <Text style={styles.rating}>⭐ {item.chef.rating}</Text>
-                  <View style={styles.chefContainer}>
-                    <Image
-                      source={{ uri: item.chef.avatar }}
-                      style={styles.chefAvatar}
-                    />
-                    <Text style={styles.chefName}>{item.chef.name}</Text>
-                  </View>
-                </View>
-              </BlurView>
-            </View>
+            <Card imageUrl={item.imageUrl} title={item.title} rating={item.chef.rating} avatar={item.chef.avatar} name={item.chef.name} />
           </Link>
         ))}
       </ScrollView>
