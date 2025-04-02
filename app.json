@@ -4,10 +4,9 @@
     "slug": "my-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "entryPoint": "./storybook/index.js",
+    "entryPoint": "index.js",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true

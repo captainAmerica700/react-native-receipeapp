@@ -18,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 import useFollowStore from '@/store/FollowStore';
 import Toast from 'react-native-toast-message';
 import { Svg, Path } from 'react-native-svg';
+import { Loader } from '@/src/utils/Loader';
 
 interface filteredData {
   id: number;
@@ -40,9 +41,7 @@ interface filteredData {
 const RecipeDetailComponent = () => {
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
-  const [data, setData] = useState<filteredData | null>(null);
   const { follow, chefName, setFollow } = useFollowStore();
-  const [loading, setLoading] = useState(true);
   const handleFollow = (item: string) => {
     if (item === chefName) {
       setFollow(0, '');
@@ -56,23 +55,22 @@ const RecipeDetailComponent = () => {
       setFollow(1, item);
     }
   };
-  useEffect(() => {
-    // Simulate a slight delay to show the loader
-    setTimeout(() => {
-      const filteredData = foodData.find((item) => item.id === Number(id));
-      setData(filteredData || null);
-      setLoading(false);
-    }, 1000); // Simulated delay
-  }, [id]);
+  const filteredData = () => {
+    const filteredData = foodData.find((item) => item.id === Number(id));
+    return filteredData;
+  };
+  const { data, loading, error } = Loader(filteredData, 1000);
+
   if (loading) {
     return (
-      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <SafeAreaView
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      >
         <ActivityIndicator size="large" color="#25AE87" />
       </SafeAreaView>
     );
   }
   return (
-
     <SafeAreaView style={styles.container}>
       {data && (
         <View key={data.id} style={styles.container1}>
@@ -178,7 +176,7 @@ const RecipeDetailComponent = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#f7f7f7'
+    backgroundColor: '#f7f7f7',
   },
   container1: {
     height: 300,

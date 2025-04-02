@@ -3,48 +3,44 @@ import { useRouter, useSegments } from 'expo-router';
 import useSignUpAuth from '@/store/signUpStore';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from '@tanstack/react-query';
 
-interface NaviGationProviderProps {
+interface NavigationProviderProps {
   children: ReactNode;
 }
 
-const NavigationProvider: React.FC<NaviGationProviderProps> = ({
-  children,
-}) => {
+const NavigationProvider: React.FC<NavigationProviderProps> = ({ children }) => {
   const { isAuthenticated } = useSignUpAuth();
   const segments = useSegments();
   const router = useRouter();
-  const queryClient = new QueryClient();
   const [fontLoaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
   useEffect(() => {
     if (fontLoaded) {
       SplashScreen.hideAsync();
     }
   }, [fontLoaded]);
-  useEffect(() => {
-    if (fontLoaded) {
-      const inAuthGroup = segments[0] === '(auth)';
-      const inProtectedGroup = segments[0] === '(tabs)';
 
-      if (!isAuthenticated && !inAuthGroup) {
-        router.replace('/(tabs)/Vegan');
-      } else if   (isAuthenticated && inAuthGroup) {
-        router.replace('/(tabs)/Vegan');
-      }
+  useEffect(() => {
+    if (!fontLoaded) return;
+
+    const inAuthGroup = segments[0] === '(auth)';
+    const inProtectedGroup = segments[0] === '(tabs)';
+
+    if (!isAuthenticated && !inAuthGroup) {
+      router.replace('/(auth)/login');
+    } else if (isAuthenticated && inAuthGroup) {
+      // Only redirect to Vegan if the user is logging in, NOT every time
+      router.replace('/(tabs)/Vegan');
     }
-  }, [isAuthenticated, fontLoaded, segments]);
+  }, [isAuthenticated, fontLoaded]);
+
   if (!fontLoaded) {
     return null; // Show loading screen or fallback UI
   }
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
+
+  return <>{children}</>;
 };
+
 export default NavigationProvider;

@@ -1,81 +1,92 @@
 import Button from '@/src/components/button';
-import React, { useEffect } from 'react';
-import { ImageBackground, Text, StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react';
+import {
+  ImageBackground,
+  Text,
+  StyleSheet,
+  View,
+  Dimensions,
+} from 'react-native'; 
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-export default function AppEntryComponent() {
+import { SafeAreaView } from 'react-native';
+
+const { height, width } = Dimensions.get('window');
+ function AppEntryComponent() {
   const router = useRouter();
   const onPress = () => {
-    router.push('/login');
+    router.push('/(tabs)/Vegan');
   };
-  useEffect(()=>{
-    setTimeout(()=>{
-      router.push('/(tabs)/Vegan');
-    },6000)
-  },[])
-  return (
-    <SafeAreaView style={{ position: 'relative' }}>
-      <ImageBackground
-        source={require('../assets/images/mainimage.svg')}
-        style={styles.imageBackground}
-      ></ImageBackground>
-      <LinearGradient
-        colors={['transparent', 'rgba(0, 0, 0, 0.8)', 'rgb(0, 0, 0)']}
-        style={styles.overlay}
-      />
 
-      <View style={styles.container}>
-        <Text style={styles.MainText}>Recipe Book</Text>
-        <Text style={styles.subText}>Excellent recipe at your fingertips</Text>
-        <Button style={styles.button} onPress={onPress}>
-          Get Started
-        </Button>
-      </View>
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      {/* Background Image */}
+      <ImageBackground
+        source={require('@/assets/images/Rectangle6.jpg')} // Make sure it's a PNG/JPG
+        style={styles.imageBackground}
+        resizeMode='cover'
+      >
+        {/* Dark Overlay */}
+        <LinearGradient
+          colors={['transparent', 'rgba(0, 0, 0, 0.8)', 'rgb(0, 0, 0)']}
+          style={styles.overlay}
+        />
+
+        {/* Content Container */}
+        <View style={styles.container}>
+          <Text style={styles.MainText}>Recipe Book</Text>
+          <Text style={styles.subText}>Excellent recipe at your fingertips</Text>
+          <Button style={styles.button} onPress={onPress}>
+            Get Started
+          </Button>
+        </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  imageBackground: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 0.1,
+  safeArea: {
+    flex: 1,
   },
-  // Overlay to create the fade effect
+  imageBackground: {
+    flex: 1,
+    width: width,
+    height: height, 
+  },
   overlay: {
-    position: 'fixed',
+    position: 'absolute',
     width: '100%',
-    height: '100%', // 0.5 from the top,
+    height: '100%',
   },
   container: {
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-    position: 'fixed',
-    bottom: 0,
+    position: 'absolute',
+    bottom: 50, // Adjust position
     width: '100%',
-    height: 250,
-    shadowColor: '#000',
   },
   MainText: {
     fontSize: 27,
-    fontWeight: '500',
-    marginTop: 10,
+    fontWeight: 'bold',
+    marginBottom: 5,
     color: 'white',
   },
   subText: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '300',
-    marginTop: 6,
+    marginBottom: 20,
     color: 'white',
+    textAlign: 'center',
   },
   button: {
     backgroundColor: '#25AE87',
-    width: '100%',
+    width: '90%',
     borderRadius: 10,
-    padding: 10,
-    marginTop: 20,
-    outline: 'none',
+    paddingVertical: 12,
+    alignItems: 'center',
   },
 });
+
+export default AppEntryComponent;

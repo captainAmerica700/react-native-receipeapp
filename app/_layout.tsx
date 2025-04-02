@@ -4,11 +4,12 @@ import { Stack } from 'expo-router';
 import FallbackUi from '@/src/StaticComponents/Fallbackui';
 import Toast from 'react-native-toast-message';
 import NavigationProvider from './NavigationProvider'; // Import the new provider
-
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 const RootLayout: React.FC = () => {
   return (
-    <Suspense fallback={<FallbackUi />}>
-      {/* <NavigationProvider> */}
+    <GestureHandlerRootView>
+      <Suspense fallback={<FallbackUi />}>
+        {/* <NavigationProvider> */}
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
           <Stack.Screen name="(tabs)" />
@@ -17,8 +18,9 @@ const RootLayout: React.FC = () => {
         </Stack>
         <StatusBar style="auto" />
         <Toast />
-      {/* </NavigationProvider> */}
-    </Suspense>
+        {/* </NavigationProvider> */}
+      </Suspense>
+    </GestureHandlerRootView>
   );
 };
 

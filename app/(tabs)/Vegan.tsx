@@ -3,22 +3,21 @@ import {
   Text,
   View,
   StyleSheet,
-  Image,
   ScrollView,
-  Modal,
-  Pressable,
   Dimensions,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import SearchBar from '@/src/StaticComponents/Home/SearchBar';
 import SpotlightComponent from '@/src/StaticComponents/Home/Spotlight';
 import TrendingComponent from '@/src/StaticComponents/Home/Trending';
 import TrendingMenu from '@/src/StaticComponents/Home/TrendingMenu';
-import UserComponent from '../../src/StaticComponents/Home/User';
+
+import SearchBar from '@/src/StaticComponents/Home/SearchBar';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import UserComponent from '@/src/StaticComponents/Home/ProfileInfo/User';
+
 const { height } = Dimensions.get('window');
 
 const VeganComponent = () => {
-  const { container, header, title, image, scrollContent } = styles;
+  const { container, header, title, scrollContent } = styles;
 
   return (
     <SafeAreaView style={container}>

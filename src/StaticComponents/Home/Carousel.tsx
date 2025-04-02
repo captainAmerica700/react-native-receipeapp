@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -6,29 +6,49 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { Link } from 'expo-router';
 import foodData from '@/src/constants/foodData';
 import useFilterStore from '@/store/useFilterStoreVegan';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Loader } from '@/src/utils/Loader';
+import _ from 'lodash';
 const { width } = Dimensions.get('window');
-
 const FoodCarousel = () => {
-  const {filter} = useFilterStore()
+  const { filter } = useFilterStore();
+  const filterData = () => {
+    return foodData.filter((item) => item.category.includes(filter));
+  };
+  const { data, loading } = Loader(filterData, 1000);
+  if (loading) {
+    return (
+      <SafeAreaView
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      >
+        <ActivityIndicator size="large" color="#25AE87" />
+      </SafeAreaView>
+    );
+  }
 
-  const data = foodData.filter(item=> item.category.includes(filter))
   return (
     <View style={styles.container}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ width: 350}}
+        style={{ width: 350 }}
       >
-        {(data ? data : foodData  ).map((item: any) => (
-          <Link key={item.id} href={`/recipeDetail/${item.id}`} replace style={{marginRight:15,overflow:'hidden'}}>
+        {(data ? data : foodData).map((item: any) => (
+          <Link
+            key={item.id}
+            href={`/recipeDetail/${item.id}`}
+            replace
+            style={{ marginRight: 15, overflow: 'hidden' }}
+          >
             <View style={styles.card}>
               <Image
-                source={{ uri: item.imageUrl}}
+                source={{ uri: item.imageUrl }}
                 style={styles.backgroundImage}
               />
               <View style={styles.overlay} />
@@ -107,7 +127,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     alignItems: 'center',
-    
   },
   rating: {
     fontSize: 14,
