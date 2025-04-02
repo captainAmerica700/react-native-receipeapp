@@ -1,3 +1,4 @@
+import Menu from '@/src/StaticComponents/profileMenu';
 import Usertabs from '@/src/StaticComponents/usertabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
@@ -44,6 +45,7 @@ const Information = () => {
             color="black"
           />
         </TouchableOpacity>
+        <Menu Menulist={ProfileData} />
       </View>
       <View style={{ padding: 25 }}>
         <View style={styles.info}>

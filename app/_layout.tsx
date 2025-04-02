@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { Stack } from 'expo-router';
 import FallbackUi from '@/src/StaticComponents/Fallbackui';
 import Toast from 'react-native-toast-message';
-import NavigationProvider from './NavigationProvider'; // Import the new provider
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 const RootLayout: React.FC = () => {
   return (

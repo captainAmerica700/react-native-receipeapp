@@ -8,7 +8,9 @@ interface NavigationProviderProps {
   children: ReactNode;
 }
 
-const NavigationProvider: React.FC<NavigationProviderProps> = ({ children }) => {
+const NavigationProvider: React.FC<NavigationProviderProps> = ({
+  children,
+}) => {
   const { isAuthenticated } = useSignUpAuth();
   const segments = useSegments();
   const router = useRouter();

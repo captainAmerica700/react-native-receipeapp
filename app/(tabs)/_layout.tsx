@@ -59,7 +59,6 @@ export default function TabsLayout() {
               size={size}
               color={color}
             />
-            
           ),
         }}
       />
