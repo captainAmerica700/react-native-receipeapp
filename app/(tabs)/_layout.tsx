@@ -1,7 +1,7 @@
 import 'react-native-reanimated'; // Ensure this is the first import
 import { Tabs, useRouter } from 'expo-router';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native';
+import {MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 export default function TabsLayout() {
   const router = useRouter()

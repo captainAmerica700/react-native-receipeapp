@@ -1,5 +1,5 @@
 import { BlurView } from 'expo-blur';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Image,
   ImageBackground,
@@ -20,24 +20,6 @@ import Toast from 'react-native-toast-message';
 import { Svg, Path } from 'react-native-svg';
 import { Loader } from '@/src/utils/Loader';
 
-interface filteredData {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  category: string;
-  chef: {
-    name: string;
-    avatar: string;
-    rating: number;
-  };
-  ingredients: {
-    id: number;
-    name: string;
-    quantity: string;
-    image: any;
-  }[];
-}
 const RecipeDetailComponent = () => {
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
@@ -150,13 +132,12 @@ const RecipeDetailComponent = () => {
                   <ScrollView showsVerticalScrollIndicator={false}>
                     {data.ingredients.map((data) => (
                       <View key={data.id} style={styles.ingredientItem}>
-                        {/* <Image
-                          source={{ uri: item.image }}
+                        <Image
+                          source={{ uri: data.image }}
                           style={styles.ingredientImage}
-                        /> */}
-
+                          resizeMode="contain"
+                        />
                         <Text style={styles.ingredientText}>{data.name}</Text>
-
                         <Text style={styles.ingredientQuantity}>
                           {data.quantity}
                         </Text>
@@ -291,9 +272,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   ingredientItem: {
-    flexDirection: 'row', // ✅ Align Image, Name, and Quantity in a row
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between', // ✅ Space between elements
+    justifyContent: 'space-between',
     padding: 15,
     shadowColor: '#a8a8a8',
     backgroundColor: '#fff',
@@ -301,13 +282,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   ingredientImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20, // ✅ Circular image
+    width: 30,
+    height: 30,
+    borderRadius: 20,
+    position: 'absolute',
   },
   ingredientText: {
     fontSize: 14,
-    flex: 1, // ✅ Allows text to take full width in the middle
+    flex: 1,
     textAlign: 'center',
   },
   ingredientQuantity: {

@@ -23,7 +23,7 @@ const FastFood = () => {
       </View>
 
       {/* Search Bar */}
-      <View style={{ paddingBottom: 20 }}>
+      <View style={{ paddingBottom: 20,marginTop: 30, }}>
         <Pressable>
           <Link href="/SearchBar">
             <TextInput

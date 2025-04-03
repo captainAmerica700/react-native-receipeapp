@@ -22,7 +22,7 @@ const { height, width } = Dimensions.get('window');
     <SafeAreaView style={styles.safeArea}>
       {/* Background Image */}
       <ImageBackground
-        source={require('@/assets/images/Rectangle6.jpg')} // Make sure it's a PNG/JPG
+        source={{uri:'https://zesty-meerkat-39c348.netlify.app/images/Rectangle6.jpg'}} // Make sure it's a PNG/JPG
         style={styles.imageBackground}
         resizeMode='cover'
       >
