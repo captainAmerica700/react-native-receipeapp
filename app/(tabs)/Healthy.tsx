@@ -14,9 +14,10 @@ import SpotlightComponent from '@/src/StaticComponents/Home/Spotlight';
 import TrendingComponent from '@/src/StaticComponents/Home/Trending';
 import { account } from '@/appwriteConfig';
 import Toast from 'react-native-toast-message';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import useSignUpAuth from '@/store/signUpStore';
 import SearchBar from './SearchBar';
+import { TextInput } from 'react-native-gesture-handler';
 const { height } = Dimensions.get('window');
 const Healthy = () => {
   return (
@@ -28,7 +29,15 @@ const Healthy = () => {
 
       {/* Search Bar */}
       <View style={{ paddingBottom: 20 }}>
-        <SearchBar />
+        <Pressable>
+          <Link href="/SearchBar">
+            <TextInput
+              placeholder="... Search here"
+              style={styles.SearchBar}
+              editable={false} // Makes the TextInput non-editable
+            />
+          </Link>
+        </Pressable>
       </View>
 
       {/* Scrollable Content */}
@@ -66,6 +75,18 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingBottom: 10,
     height: height * 0.6,
+  },
+  SearchBar: {
+    padding: 10,
+    height: 50,
+    width: '100%',
+    backgroundColor: '#EFEFEF',
+    borderRadius: 10,
+    fontSize: 12,
+    // outline: "none",
+    marginTop: 10,
+    borderColor: '#e5e7e0',
+    borderWidth: 1,
   },
 });
 export default Healthy;

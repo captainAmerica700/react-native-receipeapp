@@ -19,7 +19,7 @@ const { height } = Dimensions.get('window');
 
 const VeganComponent = () => {
   const { container, header, title, scrollContent } = styles;
-const router=useRouter()
+  const router = useRouter();
   return (
     <SafeAreaView style={container}>
       {/* Header Section */}
@@ -31,15 +31,15 @@ const router=useRouter()
 
       {/* Search Bar */}
       <View style={{ paddingBottom: 20 }}>
-        
-          <Pressable onPress={()=>router.push('/SearchBar')}>
-            <TextInput
-              placeholder="... Search here"
-              style={styles.SearchBar}
-              editable={false} // Makes the TextInput non-editable
-            />
-          </Pressable>
-        
+        <Pressable >
+          <Link href="/SearchBar">
+          <TextInput
+            placeholder="... Search here"
+            style={styles.SearchBar}
+            editable={false} // Makes the TextInput non-editable
+          /></Link>
+          
+        </Pressable>
       </View>
       <View>
         <TrendingMenu />

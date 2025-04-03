@@ -44,10 +44,10 @@ const SearchBar = () => {
         />
       </TouchableWithoutFeedback>
       <View style={{ position: 'relative' }}>
-        {data && filteredData.length > 0 && (
+        {val && (
           <FlatList
             style={styles.resultsContainer}
-            data={filteredData}
+            data={data}
             keyExtractor={(item, index) => index.toString()}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     // outline: "none",
     borderColor: '#e5e7e0',
     borderWidth: 1,
+    marginTop: -35,
   },
   resultsContainer: {
     backgroundColor: '#FFF',
