@@ -64,7 +64,7 @@ const Usertabs = ({ children }: UsertabsProps) => {
               onPress={() => setActiveTab(item.title)}
               style={[
                 styles.tab,
-                activeTab === item.title && { backgroundColor: '#129575' },
+                activeTab === item.title && { backgroundColor: '#0fba37' },
               ]}
             >
               <Text
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   text: {
-    color: '#129575',
+    color: '#0fba37',
     textAlign: 'center',
     marginVertical: 8,
   },
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   tab: {
-    backgroundColor: '#EBE8DB',
+    backgroundColor: '#f7f7f7',
     height: 40,
     width: 80,
     borderRadius: 8,

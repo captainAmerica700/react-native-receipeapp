@@ -30,7 +30,7 @@ const { width } = Dimensions.get('window');
 const ProfileCard = ({ data }: ProfileCardProps) => {
   return (
     <View>
-      {data!.slice(7).map((item: any) => (
+      {data.map((item: any) => (
         <Link key={item.id} href={`/recipeDetail/${item.id}`} replace>
           <View style={styles.slide}>
             <ImageBackground
@@ -44,7 +44,7 @@ const ProfileCard = ({ data }: ProfileCardProps) => {
                 colors={[
                   'transparent',
                   'rgba(0, 0, 0, 0.5)',
-                  'rgb(0, 0, 0,0.3)',
+                  'rgb(0, 0, 0)',
                 ]}
                 style={styles.overlay}
               />

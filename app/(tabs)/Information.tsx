@@ -3,7 +3,7 @@ import Usertabs from '@/src/StaticComponents/usertabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Image } from 'react-native';
-import { View, StyleSheet, Text, TouchableOpacity, Modal } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // interface Information{
@@ -26,7 +26,7 @@ const Information = () => {
       value: '259',
     },
   ];
-  const ProfileData = ['Account', 'Search', 'setting', 'Signout'];
+  const ProfileData = ['Account', 'Setting', 'Saved', 'Signout','Upload Recipe'];
 
   return (
     <SafeAreaView style={styles.container}>

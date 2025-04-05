@@ -19,7 +19,7 @@ import useFollowStore from '@/store/FollowStore';
 import Toast from 'react-native-toast-message';
 import { Svg, Path } from 'react-native-svg';
 import { Loader } from '@/src/utils/Loader';
-
+import { SvgUri } from 'react-native-svg';
 const RecipeDetailComponent = () => {
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
@@ -52,6 +52,7 @@ const RecipeDetailComponent = () => {
       </SafeAreaView>
     );
   }
+  
   return (
     <SafeAreaView style={styles.container}>
       {data && (
@@ -82,8 +83,8 @@ const RecipeDetailComponent = () => {
             <BlurView style={styles.bottomContainer} intensity={40} tint="dark">
               <View style={styles.infoContainer}>
                 <View style={styles.chefContainer}>
-                  <Image
-                    source={{ uri: data.chef.avatar }}
+                  <SvgUri
+                    uri= {''} 
                     style={styles.chefAvatar}
                   />
                   <Text style={styles.chefName}>{data.chef.name} </Text>
@@ -130,16 +131,15 @@ const RecipeDetailComponent = () => {
                 </Text>
                 <View style={{ height: 160, padding: 10 }}>
                   <ScrollView showsVerticalScrollIndicator={false}>
-                    {data.ingredients.map((data) => (
-                      <View key={data.id} style={styles.ingredientItem}>
-                        <Image
-                          source={{ uri: data.image }}
-                          style={styles.ingredientImage}
-                          resizeMode="contain"
+                    {data.ingredients.map((datas) => (
+                      <View key={datas.id} style={styles.ingredientItem}>
+                        <SvgUri
+                           uri= {datas.image!}
+                           style={[styles.chefAvatar, { width: 30, height: 30 }]} // Add explicit dimensions
                         />
-                        <Text style={styles.ingredientText}>{data.name}</Text>
+                        <Text style={styles.ingredientText}>{datas.name}</Text>
                         <Text style={styles.ingredientQuantity}>
-                          {data.quantity}
+                          {datas.quantity}
                         </Text>
                       </View>
                     ))}
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 15,
+    paddingHorizontal: 8,
     shadowColor: '#a8a8a8',
     backgroundColor: '#fff',
     borderRadius: 10,
@@ -284,8 +284,6 @@ const styles = StyleSheet.create({
   ingredientImage: {
     width: 30,
     height: 30,
-    borderRadius: 20,
-    position: 'absolute',
   },
   ingredientText: {
     fontSize: 14,
