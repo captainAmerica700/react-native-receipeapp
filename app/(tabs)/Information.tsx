@@ -26,7 +26,34 @@ const Information = () => {
       value: '259',
     },
   ];
-  const ProfileData = ['Account', 'Setting', 'Saved', 'Signout','Upload Recipe'];
+  const ProfileData = [
+    { id:1,
+      title: 'Account',
+      link: '/account', // or screen name for React Navigation
+      icon: 'user' // optional icon name
+    },
+    { id:2,
+      title: 'Settings',
+      link: '/settings',
+      icon: 'setting'
+    },
+    { id:3,
+      title: 'Saved',
+      link: '/saved',
+      icon: 'bookmark'
+    },
+    { id:4,
+      title: 'Sign Out',
+      link: '/logout',
+      icon: 'log-out',
+      isAction: true // flag for sign-out action
+    },
+    { id:5,
+      title: 'Upload Recipe',
+      link: '/upload-recipe',
+      icon: 'upload'
+    }
+  ];
 
   return (
     <SafeAreaView style={styles.container}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export function Loader<T>(
   loadFunction?: () => T | Promise<T>,
@@ -8,16 +8,23 @@ export function Loader<T>(
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
+  const memoizedLoadFunction = useCallback(() => {
+    if (loadFunction) {
+      return loadFunction();
+    }
+    return null;
+  }, [loadFunction]);
+
   useEffect(() => {
     let isMounted = true;
     const timer = setTimeout(async () => {
       try {
         setLoading(true);
-        const result = loadFunction? await Promise.resolve(loadFunction()): null;
+        const result = await Promise.resolve(memoizedLoadFunction());
         if (isMounted && result) {
           setData(result);
           setError(null);
-        } 
+        }
       } catch (err) {
         if (isMounted) {
           setError(err instanceof Error ? err : new Error(String(err)));
@@ -32,7 +39,7 @@ export function Loader<T>(
       clearTimeout(timer);
       isMounted = false;
     };
-  }, [loadFunction, delay]);
+  }, [memoizedLoadFunction, delay]);
 
   return { data, loading, error };
 }

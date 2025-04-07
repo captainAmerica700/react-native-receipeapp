@@ -3,21 +3,28 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Ionicons, AntDesign } from '@expo/vector-icons'; // or any other icon library you prefer
 
-interface MenuProps {
-  Menulist: string[];
+type IoniconsIconName = keyof typeof Ionicons.glyphMap;
+type AntDesignIconName = keyof typeof AntDesign.glyphMap;
+interface data{
+  id:number,
+  title: string,
+  link: string,
+  icon: string,
 }
-
+interface MenuProps {
+  Menulist:data[];
+}
 const Menu = ({ Menulist }: MenuProps) => {
   // Map menu items to corresponding icons
   const getIcon = (item: string) => {
     switch (item.toLowerCase()) {
       case 'account':
         return <AntDesign name="user" size={10} color="#A9A9A9" />;
-      case 'setting':
+      case 'settings':
         return <Ionicons name="settings" size={10} color="#A9A9A9" />;
       case 'saved':
         return <Ionicons name="bookmark" size={10} color="#A9A9A9" />;
-      case 'signout':
+      case 'sign out':
         return <Ionicons name="log-out" size={10} color="#A9A9A9" />;
       case 'Upload Recipe':
         return <AntDesign name="upload" size={10} color="#A9A9A9" />;
@@ -28,13 +35,13 @@ const Menu = ({ Menulist }: MenuProps) => {
 
   return (
     <View style={styles.container}>
-      {Menulist.map((item: string, index: number) => (
-        <React.Fragment key={item}>
-          <Link href={`/`} style={styles.menuItem}>
-            <View style={styles.iconContainer}>{getIcon(item)}</View>
-            <Text style={styles.title}>{item}</Text>
+      {Menulist.map((item) => (
+        <React.Fragment key={item.id}>
+          <Link href={`/(tabs)/${item.link}`} style={styles.menuItem} >
+            <View style={styles.iconContainer}>{getIcon(item.title)}</View>
+            <Text style={styles.title}>{item.title}</Text>
           </Link>
-          {index < Menulist.length - 1 && <View style={styles.separator} />}
+          {item.id < Menulist.length  && <View style={styles.separator} />}
         </React.Fragment>
       ))}
     </View>

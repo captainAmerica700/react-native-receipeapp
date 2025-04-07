@@ -87,6 +87,16 @@ export default function TabsLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="upload-recipe"
+        options={{
+          title: 'Upload Recipe',
+          headerShown: true,
+          headerTitleAlign: 'center',
+          href: null,
+        }}
+      />
+      
     </Tabs>
   );
 }

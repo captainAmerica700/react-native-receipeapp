@@ -15,7 +15,7 @@ const { height, width } = Dimensions.get('window');
  function AppEntryComponent() {
   const router = useRouter();
   const onPress = () => {
-    router.push('/(tabs)/Vegan');
+    router.push('/(tabs)/upload-recipe');
   };
 
   return (
